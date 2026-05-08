@@ -1,0 +1,77 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Type checking / linting caches
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+
+# ML experiment outputs
+experiments/runs/
+experiments/artifacts/
+model-evaluation-lab/data/predictions/
+model-evaluation-lab/data/evaluation/
+model-evaluation-lab/data/thresholds/
+model-evaluation-lab/reports/
+
+# Model files / large artifacts
+*.pt
+*.pth
+*.onnx
+*.joblib
+*.pkl
+*.tar.gz
+
+# Local data
+data/raw/
+data/processed/
+data/interim/
+data/external/
+
+# AWS / local credentials
+.aws/
+*.pem
+*.key
+
+misc/
