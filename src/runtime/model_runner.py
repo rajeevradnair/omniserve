@@ -7,9 +7,11 @@ import torch.nn as nn
 
 
 class ModelRunner:
-    def __init__(self, model: nn.Module, device: torch.device | str | None = None) -> None:
+    def __init__(
+        self, model: nn.Module, device: torch.device | str | None = None
+    ) -> None:
         if device is None:
-            device = "cuda" if torch.cuda.is_available() else "cpu" 
+            device = "cuda" if torch.cuda.is_available() else "cpu"
         self.device = torch.device(device)
         self.model = model.to(self.device)
         self.model.eval()
@@ -40,7 +42,8 @@ class ModelRunner:
         self, inputs: Any, warmup: int = 5, runs: int = 20
     ) -> dict[str, float | int | str]:
         moved_inputs = self.move_inputs_to_device(inputs)
-        
+
+        # warmup and timing loop
         with torch.no_grad():
             for _ in range(warmup):
                 if isinstance(moved_inputs, dict):
@@ -50,11 +53,10 @@ class ModelRunner:
 
             if self.device.type == "cuda":
                 torch.cuda.synchronize()
-            
+
             runtimes_ms = []
             with torch.no_grad():
                 for _ in range(runs):
-                    
                     start = time.perf_counter()
 
                     if isinstance(moved_inputs, dict):
@@ -70,6 +72,7 @@ class ModelRunner:
                     runtimes_ms.append(runtime)
 
         avg_runtime = sum(runtimes_ms) / len(runtimes_ms)
+
         return {
             "average_runtime_ms": avg_runtime,
             "warmup_runs": warmup,

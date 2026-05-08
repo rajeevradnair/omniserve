@@ -81,10 +81,8 @@ def create_example_tensors() -> dict[str, torch.Tensor]:
     examples = {
         # One input with 4 numeric features.
         "single_feature_batch": torch.randn(1, 4, dtype=torch.float32),
-
         # Eight inputs, each with 4 features.
         "larger_feature_batch": torch.randn(8, 4, dtype=torch.float32),
-
         # Text token IDs: batch of 2 text prompts, each 6 tokens long.
         "text_token_ids": torch.tensor(
             [
@@ -93,7 +91,6 @@ def create_example_tensors() -> dict[str, torch.Tensor]:
             ],
             dtype=torch.int64,
         ),
-
         # Attention mask: 1 means real token, 0 means padding.
         "attention_mask": torch.tensor(
             [
@@ -102,16 +99,12 @@ def create_example_tensors() -> dict[str, torch.Tensor]:
             ],
             dtype=torch.int64,
         ),
-
         # Batch of 4 RGB images, each 224x224.
         "image_batch": torch.randn(4, 3, 224, 224, dtype=torch.float32),
-
         # Batch of 2 audio waveforms, each with 16000 samples.
         "audio_batch": torch.randn(2, 16000, dtype=torch.float32),
-
         # Batch of 1 video, with 8 frames, RGB, 224x224.
         "video_batch": torch.randn(1, 8, 3, 224, 224, dtype=torch.float32),
-
         # Classifier output logits: batch of 4 examples, 10 classes.
         "classifier_logits": torch.randn(4, 10, dtype=torch.float32),
     }
